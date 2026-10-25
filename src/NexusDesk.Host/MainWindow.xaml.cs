@@ -34,6 +34,21 @@ namespace NexusDesk.Host
             }
         }
 
+        private async void SortButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var downloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads";
+                var sorter = new FileSorterService();
+                await sorter.ProcessDirectoryAsync(downloadsPath);
+                MessageBox.Show("Сортировка завершена!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
+
         protected override void OnClosed(System.EventArgs e)
         {
             // Сохраняем конфиг при закрытии
