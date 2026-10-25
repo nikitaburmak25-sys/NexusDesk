@@ -1,11 +1,17 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.IO;
+using System.Windows;
 using NexusDesk.Core.Models;
+using NexusDesk.Core.Services;
 
 namespace NexusDesk.Host
 {
     public partial class MainWindow : Window
     {
         private AppConfig _config;
+        private DiskScanner _diskScanner;
+
+        public ObservableCollection<DriveInfo> Drives { get; set; } = new();
 
         public MainWindow()
         {
@@ -14,6 +20,18 @@ namespace NexusDesk.Host
             // Загружаем конфиг при старте
             _config = ConfigManager.Load();
             this.DataContext = _config;
+
+            _diskScanner = new DiskScanner();
+            LoadDrivesAsync();
+        }
+
+        private async void LoadDrivesAsync()
+        {
+            var drives = await _diskScanner.GetDrivesAsync();
+            foreach (var drive in drives)
+            {
+                Drives.Add(drive);
+            }
         }
 
         protected override void OnClosed(System.EventArgs e)
