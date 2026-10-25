@@ -68,7 +68,7 @@
         <Grid x:Name="BigPictureOverlay" Background="#1E1E1E" Visibility="Collapsed" Margin="40">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="Мои приложения" FontSize="24" FontWeight="Bold" Foreground="White" Margin="0,0,0,15" HorizontalAlignment="Center"/>
-                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="0,0,0,30">
                     <StackPanel Orientation="Horizontal">
                         <Border Style="{StaticResource GameTileStyle}">
                             <TextBlock Text="Steam" FontSize="18" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -80,6 +80,11 @@
                             <TextBlock Text="Hydra Launcher" FontSize="18" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </StackPanel>
+                </ScrollViewer>
+
+                <TextBlock Text="Мои игры" FontSize="24" FontWeight="Bold" Foreground="White" Margin="0,0,0,15" HorizontalAlignment="Center"/>
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+                    <StackPanel x:Name="MyGamesStackPanel" Orientation="Horizontal"/>
                 </ScrollViewer>
             </StackPanel>
 

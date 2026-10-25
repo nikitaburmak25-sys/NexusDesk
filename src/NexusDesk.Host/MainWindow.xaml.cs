@@ -1,6 +1,8 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls; // <--- ТА САМАЯ НЕДОСТАЮЩАЯ СТРОКА
 using System.Windows.Input;
@@ -94,11 +96,103 @@ namespace NexusDesk.Host
             BigPictureOverlay.Visibility = Visibility.Visible;
             MainMenuGrid.Visibility = Visibility.Collapsed;
 
+            LoadGamesForBigPictureAsync();
+
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Loaded, new Action(() =>
             {
                 var firstTile = FindVisualChild<Border>(BigPictureOverlay);
                 firstTile?.Focus();
             }));
+        }
+
+        private async void LoadGamesForBigPictureAsync()
+        {
+            try
+            {
+                MyGamesStackPanel.Children.Clear();
+                var scanner = new GameScannerService();
+
+                var localGames = await scanner.ScanLocalGamesAsync(@"C:\Games");
+                var steamGames = await scanner.ScanSteamGamesAsync();
+
+                var allGames = localGames.Concat(steamGames)
+                    .GroupBy(g => g.Path, StringComparer.OrdinalIgnoreCase)
+                    .Select(g => g.First())
+                    .ToList();
+
+                foreach (var game in allGames)
+                {
+                    var border = new Border
+                    {
+                        Style = (Style)FindResource("GameTileStyle")
+                    };
+
+                    var textBlock = new TextBlock
+                    {
+                        Text = game.Name,
+                        FontSize = 16,
+                        FontWeight = FontWeights.SemiBold,
+                        Foreground = Brushes.White,
+                        TextWrapping = TextWrapping.Wrap,
+                        TextAlignment = TextAlignment.Center,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center,
+                        Margin = new Thickness(5)
+                    };
+
+                    border.Child = textBlock;
+
+                    border.MouseLeftButtonUp += (s, e) =>
+                    {
+                        LaunchGame(game);
+                    };
+
+                    border.KeyDown += (s, e) =>
+                    {
+                        if (e.Key == Key.Enter)
+                        {
+                            LaunchGame(game);
+                            e.Handled = true;
+                        }
+                    };
+
+                    MyGamesStackPanel.Children.Add(border);
+                }
+
+                if (allGames.Count == 0)
+                {
+                    var emptyText = new TextBlock
+                    {
+                        Text = "Игры не найдены",
+                        FontSize = 16,
+                        Foreground = Brushes.Gray,
+                        VerticalAlignment = VerticalAlignment.Center,
+                        Margin = new Thickness(10)
+                    };
+                    MyGamesStackPanel.Children.Add(emptyText);
+                }
+            }
+            catch (Exception)
+            {
+                // Ignore scanning errors
+            }
+        }
+
+        private void LaunchGame(GameInfo game)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = game.Path,
+                    WorkingDirectory = Path.GetDirectoryName(game.Path) ?? string.Empty,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Не удалось запустить игру {game.Name}: {ex.Message}");
+            }
         }
 
         private void BigPicture_Unchecked(object sender, RoutedEventArgs e)
