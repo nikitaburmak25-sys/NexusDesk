@@ -24,3 +24,4 @@ jobs:
           prompt: "Реши задачу из Issue #${{ github.event.issue.number }}. Изучи проект NexusDesk, напиши необходимый код, создай новую ветку, закоммить изменения и открой Pull Request."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GEMINI_CLI_TRUST_WORKSPACE: 'true'
