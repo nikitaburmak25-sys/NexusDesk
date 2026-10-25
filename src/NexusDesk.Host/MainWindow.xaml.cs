@@ -56,10 +56,11 @@ namespace NexusDesk.Host
             try
             {
                 await _gameBooster.EnableBoostAsync();
+                MessageBox.Show("Game Booster: Максимальная производительность включена");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"Ошибка: {ex.Message}");
+                MessageBox.Show("Не удалось изменить состояние службы. Запустите программу от имени администратора");
             }
         }
 
@@ -68,10 +69,11 @@ namespace NexusDesk.Host
             try
             {
                 await _gameBooster.DisableBoostAsync();
+                MessageBox.Show("Game Booster: Сбалансированный режим восстановлен");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"Ошибка: {ex.Message}");
+                MessageBox.Show("Не удалось изменить состояние службы. Запустите программу от имени администратора");
             }
         }
 
