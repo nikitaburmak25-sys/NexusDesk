@@ -1,6 +1,8 @@
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls; // <--- ТА САМАЯ НЕДОСТАЮЩАЯ СТРОКА
 using System.Windows.Input;
 using System.Windows.Media;
 using NexusDesk.Core.Models;
@@ -176,7 +178,7 @@ namespace NexusDesk.Host
             return null;
         }
 
-        protected override void OnClosed(System.EventArgs e)
+        protected override void OnClosed(EventArgs e)
         {
             _gamepadService?.Stop();
             // Сохраняем конфиг при закрытии
