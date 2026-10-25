@@ -25,7 +25,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Умный сортировщик" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
-                    <CheckBox Grid.Column="1" IsChecked="{Binding Modules[sorter].Enabled}" Style="{StaticResource {x:Type ToggleButton}}" Width="50" Height="25"/>
+                    <ToggleButton Grid.Column="1" IsChecked="{Binding Modules[sorter].Enabled}" Style="{StaticResource ModernToggleSwitch}"/>
                 </Grid>
 
                 <Grid Margin="0,10">
@@ -34,7 +34,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Game Booster" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
-                    <CheckBox Grid.Column="1" IsChecked="{Binding Modules[gameBooster].Enabled}" Style="{StaticResource {x:Type ToggleButton}}" Width="50" Height="25"/>
+                    <ToggleButton Grid.Column="1" IsChecked="{Binding Modules[gameBooster].Enabled}" Style="{StaticResource ModernToggleSwitch}"/>
                 </Grid>
 
                 <Grid Margin="0,10">
@@ -43,7 +43,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Big Picture (Консоль)" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
-                    <CheckBox Grid.Column="1" IsChecked="{Binding Modules[bigPicture].Enabled}" Style="{StaticResource {x:Type ToggleButton}}" Width="50" Height="25"/>
+                    <ToggleButton Grid.Column="1" IsChecked="{Binding Modules[bigPicture].Enabled}" Style="{StaticResource ModernToggleSwitch}"/>
                 </Grid>
 
                 <TextBlock Text="Диски" FontSize="18" Foreground="White" Margin="0,20,0,10"/>
@@ -55,14 +55,11 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
 
-                <Border CornerRadius="4" Background="#0078D4" Margin="0,15,0,0" HorizontalAlignment="Left">
-                    <Button Content="Запустить сортировку" 
-                            Background="Transparent" 
-                            Foreground="White" 
-                            BorderThickness="0" 
-                            Padding="10,5" 
-                            Click="SortButton_Click"/>
-                </Border>
+                <Button Content="Запустить сортировку" 
+                        Style="{StaticResource ModernButton}"
+                        Margin="0,15,0,0" 
+                        HorizontalAlignment="Left"
+                        Click="SortButton_Click"/>
             </StackPanel>
         </Border>
     </Grid>
