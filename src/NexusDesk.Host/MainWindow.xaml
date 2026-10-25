@@ -45,6 +45,15 @@
                     <TextBlock Text="Big Picture (Консоль)" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
                     <CheckBox Grid.Column="1" IsChecked="{Binding Modules[bigPicture].Enabled}" Style="{StaticResource {x:Type ToggleButton}}" Width="50" Height="25"/>
                 </Grid>
+
+                <TextBlock Text="Диски" FontSize="18" Foreground="White" Margin="0,20,0,10"/>
+                <ListBox ItemsSource="{Binding Drives, RelativeSource={RelativeSource AncestorType=Window}}" Background="#1E1E1E" Foreground="White" BorderBrush="#444444" Height="100">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" Foreground="White" FontSize="14"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
         </Border>
     </Grid>
