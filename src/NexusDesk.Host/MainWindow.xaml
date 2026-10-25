@@ -54,6 +54,15 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+
+                <Border CornerRadius="4" Background="#0078D4" Margin="0,15,0,0" HorizontalAlignment="Left">
+                    <Button Content="Запустить сортировку" 
+                            Background="Transparent" 
+                            Foreground="White" 
+                            BorderThickness="0" 
+                            Padding="10,5" 
+                            Click="SortButton_Click"/>
+                </Border>
             </StackPanel>
         </Border>
     </Grid>
