@@ -5,23 +5,23 @@ on:
     types: [labeled]
 
 jobs:
-  auto-pr:
+  gemini-issue:
     if: contains(github.event.issue.labels.*.name, 'gemini')
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
       issues: write
+      pull-requests: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Run Gemini CLI
         uses: google-github-actions/run-gemini-cli@v1
         with:
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
-          prompt: |
-            Ты — Senior C# разработчик. Реши задачу из Issue #${{ github.event.issue.number }}.
-            Изучи структуру проекта NexusDesk (.NET 8). Напиши код, создай новую ветку, закоммить и открой Pull Request.
+          issue_number: ${{ github.event.issue.number }}
+          command: 'fix' 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-     GEMINI_TRUST_WORKSPACE: 'true'  # <--- ДОБАВИТЬ ВОТ ЭТУ СТРОКУ
