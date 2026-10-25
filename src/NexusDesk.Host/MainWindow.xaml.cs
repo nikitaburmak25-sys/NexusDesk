@@ -77,6 +77,33 @@ namespace NexusDesk.Host
             }
         }
 
+        private void BigPicture_Checked(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Maximized;
+            WindowStyle = WindowStyle.None;
+            ResizeMode = ResizeMode.NoResize;
+            BigPictureOverlay.Visibility = Visibility.Visible;
+            MainMenuGrid.Visibility = Visibility.Collapsed;
+        }
+
+        private void BigPicture_Unchecked(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Normal;
+            WindowStyle = WindowStyle.SingleBorderWindow;
+            ResizeMode = ResizeMode.CanResize;
+            BigPictureOverlay.Visibility = Visibility.Collapsed;
+            MainMenuGrid.Visibility = Visibility.Visible;
+        }
+
+        private void BigPictureExit_Click(object sender, RoutedEventArgs e)
+        {
+            if (_config != null && _config.Modules.ContainsKey("bigPicture"))
+            {
+                _config.Modules["bigPicture"].Enabled = false;
+            }
+            BigPicture_Unchecked(sender, e);
+        }
+
         protected override void OnClosed(System.EventArgs e)
         {
             // Сохраняем конфиг при закрытии

@@ -4,63 +4,72 @@
         Title="NexusDesk" Height="600" Width="800"
         Background="#1E1E1E" WindowStartupLocation="CenterScreen">
     
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <Grid>
+        <Grid x:Name="MainMenuGrid" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <!-- Заголовок -->
-        <TextBlock Text="NexusDesk Control Center" FontSize="28" FontWeight="Bold" Foreground="White" Margin="0,0,0,20"/>
+            <!-- Заголовок -->
+            <TextBlock Text="NexusDesk Control Center" FontSize="28" FontWeight="Bold" Foreground="White" Margin="0,0,0,20"/>
 
-        <!-- Панель модулей -->
-        <Border Grid.Row="1" Background="#2D2D30" CornerRadius="8" Padding="20">
-            <StackPanel>
-                <TextBlock Text="Модули системы" FontSize="20" Foreground="#CCCCCC" Margin="0,0,0,15"/>
-                
-                <!-- Тумблеры -->
-                <Grid Margin="0,10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="Умный сортировщик" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
-                    <ToggleButton Grid.Column="1" IsChecked="{Binding Modules[sorter].Enabled}" Style="{StaticResource ModernToggleSwitch}"/>
-                </Grid>
+            <!-- Панель модулей -->
+            <Border Grid.Row="1" Background="#2D2D30" CornerRadius="8" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="Модули системы" FontSize="20" Foreground="#CCCCCC" Margin="0,0,0,15"/>
+                    
+                    <!-- Тумблеры -->
+                    <Grid Margin="0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Умный сортировщик" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                        <ToggleButton Grid.Column="1" IsChecked="{Binding Modules[sorter].Enabled}" Style="{StaticResource ModernToggleSwitch}"/>
+                    </Grid>
 
-                <Grid Margin="0,10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="Game Booster" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
-                    <ToggleButton Grid.Column="1" IsChecked="{Binding Modules[gameBooster].Enabled}" Checked="GameBooster_Checked" Unchecked="GameBooster_Unchecked" Style="{StaticResource ModernToggleSwitch}"/>
-                </Grid>
+                    <Grid Margin="0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Game Booster" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                        <ToggleButton Grid.Column="1" IsChecked="{Binding Modules[gameBooster].Enabled}" Checked="GameBooster_Checked" Unchecked="GameBooster_Unchecked" Style="{StaticResource ModernToggleSwitch}"/>
+                    </Grid>
 
-                <Grid Margin="0,10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="Big Picture (Консоль)" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
-                    <ToggleButton Grid.Column="1" IsChecked="{Binding Modules[bigPicture].Enabled}" Style="{StaticResource ModernToggleSwitch}"/>
-                </Grid>
+                    <Grid Margin="0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Big Picture (Консоль)" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                        <ToggleButton Grid.Column="1" IsChecked="{Binding Modules[bigPicture].Enabled}" Checked="BigPicture_Checked" Unchecked="BigPicture_Unchecked" Style="{StaticResource ModernToggleSwitch}"/>
+                    </Grid>
 
-                <TextBlock Text="Диски" FontSize="18" Foreground="White" Margin="0,20,0,10"/>
-                <ListBox ItemsSource="{Binding Drives, RelativeSource={RelativeSource AncestorType=Window}}" Background="#1E1E1E" Foreground="White" BorderBrush="#444444" Height="100">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}" Foreground="White" FontSize="14"/>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                    <TextBlock Text="Диски" FontSize="18" Foreground="White" Margin="0,20,0,10"/>
+                    <ListBox ItemsSource="{Binding Drives, RelativeSource={RelativeSource AncestorType=Window}}" Background="#1E1E1E" Foreground="White" BorderBrush="#444444" Height="100">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" Foreground="White" FontSize="14"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
 
-                <Button Content="Запустить сортировку" 
-                        Style="{StaticResource ModernButton}"
-                        Margin="0,15,0,0" 
-                        HorizontalAlignment="Left"
-                        Click="SortButton_Click"/>
+                    <Button Content="Запустить сортировку" 
+                            Style="{StaticResource ModernButton}"
+                            Margin="0,15,0,0" 
+                            HorizontalAlignment="Left"
+                            Click="SortButton_Click"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="BigPictureOverlay" Background="#1E1E1E" Visibility="Collapsed">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="BIG PICTURE MODE" FontSize="48" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                <Button Content="Выйти" Style="{StaticResource ModernButton}" Width="120" HorizontalAlignment="Center" Click="BigPictureExit_Click"/>
             </StackPanel>
-        </Border>
+        </Grid>
     </Grid>
 </Window>
