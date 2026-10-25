@@ -94,4 +94,40 @@
         </Setter>
     </Style>
 
+    <!-- Modern Game Tile Style -->
+    <Style x:Key="GameTileStyle" TargetType="{x:Type Border}">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="200"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Background" Value="#2D2D30"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Focusable" Value="True"/>
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1.0" ScaleY="1.0"/>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="White"/>
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="BorderBrush" Value="White"/>
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>
