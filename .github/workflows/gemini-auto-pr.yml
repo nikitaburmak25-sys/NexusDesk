@@ -24,3 +24,4 @@ jobs:
             Изучи структуру проекта NexusDesk (.NET 8). Напиши код, создай новую ветку, закоммить и открой Pull Request.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     GEMINI_TRUST_WORKSPACE: 'true'  # <--- ДОБАВИТЬ ВОТ ЭТУ СТРОКУ
