@@ -9,26 +9,61 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexusDesk.Host", "src\Nexus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexusDesk.Core", "src\NexusDesk.Core\NexusDesk.Core.csproj", "{BDA53A8C-2C64-4B53-A641-6799D256607E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexusDesk.Core.Tests", "src\NexusDesk.Core.Tests\NexusDesk.Core.Tests.csproj", "{907FA244-01AB-4643-939E-BC6FD9FF3C68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Debug|x64.Build.0 = Debug|Any CPU
+		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Debug|x86.Build.0 = Debug|Any CPU
 		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Release|x64.ActiveCfg = Release|Any CPU
+		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Release|x64.Build.0 = Release|Any CPU
+		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Release|x86.ActiveCfg = Release|Any CPU
+		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Release|x86.Build.0 = Release|Any CPU
 		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Debug|x64.Build.0 = Debug|Any CPU
+		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Debug|x86.Build.0 = Debug|Any CPU
 		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Release|x64.ActiveCfg = Release|Any CPU
+		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Release|x64.Build.0 = Release|Any CPU
+		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Release|x86.ActiveCfg = Release|Any CPU
+		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Release|x86.Build.0 = Release|Any CPU
+		{907FA244-01AB-4643-939E-BC6FD9FF3C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{907FA244-01AB-4643-939E-BC6FD9FF3C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{907FA244-01AB-4643-939E-BC6FD9FF3C68}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{907FA244-01AB-4643-939E-BC6FD9FF3C68}.Debug|x64.Build.0 = Debug|Any CPU
+		{907FA244-01AB-4643-939E-BC6FD9FF3C68}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{907FA244-01AB-4643-939E-BC6FD9FF3C68}.Debug|x86.Build.0 = Debug|Any CPU
+		{907FA244-01AB-4643-939E-BC6FD9FF3C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{907FA244-01AB-4643-939E-BC6FD9FF3C68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{907FA244-01AB-4643-939E-BC6FD9FF3C68}.Release|x64.ActiveCfg = Release|Any CPU
+		{907FA244-01AB-4643-939E-BC6FD9FF3C68}.Release|x64.Build.0 = Release|Any CPU
+		{907FA244-01AB-4643-939E-BC6FD9FF3C68}.Release|x86.ActiveCfg = Release|Any CPU
+		{907FA244-01AB-4643-939E-BC6FD9FF3C68}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3} = {4FA50DC2-305E-4ABF-97CE-B149CB5B0162}
 		{BDA53A8C-2C64-4B53-A641-6799D256607E} = {4FA50DC2-305E-4ABF-97CE-B149CB5B0162}
+		{907FA244-01AB-4643-939E-BC6FD9FF3C68} = {4FA50DC2-305E-4ABF-97CE-B149CB5B0162}
 	EndGlobalSection
 EndGlobal
