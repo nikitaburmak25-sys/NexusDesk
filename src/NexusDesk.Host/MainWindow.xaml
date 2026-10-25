@@ -34,7 +34,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Game Booster" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
-                    <ToggleButton Grid.Column="1" IsChecked="{Binding Modules[gameBooster].Enabled}" Style="{StaticResource ModernToggleSwitch}"/>
+                    <ToggleButton Grid.Column="1" IsChecked="{Binding Modules[gameBooster].Enabled}" Checked="GameBooster_Checked" Unchecked="GameBooster_Unchecked" Style="{StaticResource ModernToggleSwitch}"/>
                 </Grid>
 
                 <Grid Margin="0,10">

@@ -10,6 +10,7 @@ namespace NexusDesk.Host
     {
         private AppConfig _config;
         private DiskScanner _diskScanner;
+        private GameBoosterService _gameBooster;
 
         public ObservableCollection<DriveInfo> Drives { get; set; } = new();
 
@@ -22,6 +23,7 @@ namespace NexusDesk.Host
             this.DataContext = _config;
 
             _diskScanner = new DiskScanner();
+            _gameBooster = new GameBoosterService();
             LoadDrivesAsync();
         }
 
@@ -42,6 +44,30 @@ namespace NexusDesk.Host
                 var sorter = new FileSorterService();
                 await sorter.ProcessDirectoryAsync(downloadsPath);
                 MessageBox.Show("Сортировка завершена!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
+
+        private async void GameBooster_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await _gameBooster.EnableBoostAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
+
+        private async void GameBooster_Unchecked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await _gameBooster.DisableBoostAsync();
             }
             catch (Exception ex)
             {
