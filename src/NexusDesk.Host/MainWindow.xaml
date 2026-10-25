@@ -65,10 +65,22 @@
             </Border>
         </Grid>
 
-        <Grid x:Name="BigPictureOverlay" Background="#1E1E1E" Visibility="Collapsed">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="BIG PICTURE MODE" FontSize="48" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,20"/>
-                <Button Content="Выйти" Style="{StaticResource ModernButton}" Width="120" HorizontalAlignment="Center" Click="BigPictureExit_Click"/>
+        <Grid x:Name="BigPictureOverlay" Background="#1E1E1E" Visibility="Collapsed" Margin="40">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Мои приложения" FontSize="24" FontWeight="Bold" Foreground="White" Margin="0,0,0,15"/>
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource GameTileStyle}">
+                            <TextBlock Text="Steam" FontSize="18" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Style="{StaticResource GameTileStyle}">
+                            <TextBlock Text="Epic Games" FontSize="18" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Style="{StaticResource GameTileStyle}">
+                            <TextBlock Text="Hydra Launcher" FontSize="18" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
             </StackPanel>
         </Grid>
     </Grid>
