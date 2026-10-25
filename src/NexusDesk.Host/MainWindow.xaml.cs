@@ -1,8 +1,11 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
 using NexusDesk.Core.Models;
 using NexusDesk.Core.Services;
+using NexusDesk.Host.Services;
 
 namespace NexusDesk.Host
 {
@@ -11,6 +14,7 @@ namespace NexusDesk.Host
         private AppConfig _config;
         private DiskScanner _diskScanner;
         private GameBoosterService _gameBooster;
+        private GamepadService _gamepadService;
 
         public ObservableCollection<DriveInfo> Drives { get; set; } = new();
 
@@ -25,6 +29,9 @@ namespace NexusDesk.Host
             _diskScanner = new DiskScanner();
             _gameBooster = new GameBoosterService();
             LoadDrivesAsync();
+
+            _gamepadService = new GamepadService();
+            _gamepadService.OnAction += GamepadService_OnAction;
         }
 
         private async void LoadDrivesAsync()
@@ -84,6 +91,12 @@ namespace NexusDesk.Host
             ResizeMode = ResizeMode.NoResize;
             BigPictureOverlay.Visibility = Visibility.Visible;
             MainMenuGrid.Visibility = Visibility.Collapsed;
+
+            Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Loaded, new Action(() =>
+            {
+                var firstTile = FindVisualChild<Border>(BigPictureOverlay);
+                firstTile?.Focus();
+            }));
         }
 
         private void BigPicture_Unchecked(object sender, RoutedEventArgs e)
@@ -104,8 +117,68 @@ namespace NexusDesk.Host
             BigPicture_Unchecked(sender, e);
         }
 
+        private void GamepadService_OnAction(GamepadAction action)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (BigPictureOverlay.Visibility != Visibility.Visible) return;
+
+                switch (action)
+                {
+                    case GamepadAction.Left:
+                        MoveFocus(new TraversalRequest(FocusNavigationDirection.Previous));
+                        break;
+                    case GamepadAction.Right:
+                        MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                        break;
+                    case GamepadAction.A:
+                        if (Keyboard.FocusedElement is UIElement focusedElement)
+                        {
+                            var downArgs = new KeyEventArgs(Keyboard.PrimaryDevice, PresentationSource.FromVisual(this), 0, Key.Enter)
+                            {
+                                RoutedEvent = Keyboard.KeyDownEvent
+                            };
+                            focusedElement.RaiseEvent(downArgs);
+
+                            var upArgs = new KeyEventArgs(Keyboard.PrimaryDevice, PresentationSource.FromVisual(this), 0, Key.Enter)
+                            {
+                                RoutedEvent = Keyboard.KeyUpEvent
+                            };
+                            focusedElement.RaiseEvent(upArgs);
+                        }
+                        break;
+                    case GamepadAction.B:
+                        if (_config != null && _config.Modules.ContainsKey("bigPicture"))
+                        {
+                            _config.Modules["bigPicture"].Enabled = false;
+                        }
+                        BigPicture_Unchecked(this, new RoutedEventArgs());
+                        break;
+                }
+            });
+        }
+
+        private static T? FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+                if (child is T typedChild)
+                {
+                    return typedChild;
+                }
+                var result = FindVisualChild<T>(child);
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+            return null;
+        }
+
         protected override void OnClosed(System.EventArgs e)
         {
+            _gamepadService?.Stop();
             // Сохраняем конфиг при закрытии
             ConfigManager.Save(_config);
             base.OnClosed(e);
