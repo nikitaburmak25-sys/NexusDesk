@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4FA50DC2-305E-4ABF-97CE-B149CB5B0162}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexusDesk.Host", "src\NexusDesk.Host\NexusDesk.Host.csproj", "{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexusDesk.Core", "src\NexusDesk.Core\NexusDesk.Core.csproj", "{BDA53A8C-2C64-4B53-A641-6799D256607E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA53A8C-2C64-4B53-A641-6799D256607E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F71A1D18-ECDC-42A4-ADA7-B996C75CA4C3} = {4FA50DC2-305E-4ABF-97CE-B149CB5B0162}
+		{BDA53A8C-2C64-4B53-A641-6799D256607E} = {4FA50DC2-305E-4ABF-97CE-B149CB5B0162}
+	EndGlobalSection
+EndGlobal

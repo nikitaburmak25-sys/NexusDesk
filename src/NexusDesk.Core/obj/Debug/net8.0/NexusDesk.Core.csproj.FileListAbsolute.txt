@@ -1,0 +1,11 @@
+C:\Users\nikit\NexusDesk\src\NexusDesk.Core\bin\Debug\net8.0\NexusDesk.Core.deps.json
+C:\Users\nikit\NexusDesk\src\NexusDesk.Core\bin\Debug\net8.0\NexusDesk.Core.dll
+C:\Users\nikit\NexusDesk\src\NexusDesk.Core\bin\Debug\net8.0\NexusDesk.Core.pdb
+C:\Users\nikit\NexusDesk\src\NexusDesk.Core\obj\Debug\net8.0\NexusDesk.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nikit\NexusDesk\src\NexusDesk.Core\obj\Debug\net8.0\NexusDesk.Core.AssemblyInfoInputs.cache
+C:\Users\nikit\NexusDesk\src\NexusDesk.Core\obj\Debug\net8.0\NexusDesk.Core.AssemblyInfo.cs
+C:\Users\nikit\NexusDesk\src\NexusDesk.Core\obj\Debug\net8.0\NexusDesk.Core.csproj.CoreCompileInputs.cache
+C:\Users\nikit\NexusDesk\src\NexusDesk.Core\obj\Debug\net8.0\NexusDesk.Core.dll
+C:\Users\nikit\NexusDesk\src\NexusDesk.Core\obj\Debug\net8.0\refint\NexusDesk.Core.dll
+C:\Users\nikit\NexusDesk\src\NexusDesk.Core\obj\Debug\net8.0\NexusDesk.Core.pdb
+C:\Users\nikit\NexusDesk\src\NexusDesk.Core\obj\Debug\net8.0\ref\NexusDesk.Core.dll
