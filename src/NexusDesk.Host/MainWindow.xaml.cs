@@ -1,23 +1,26 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using NexusDesk.Core.Models;
 
-namespace NexusDesk.Host;
-
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
-public partial class MainWindow : Window
+namespace NexusDesk.Host
 {
-    public MainWindow()
+    public partial class MainWindow : Window
     {
-        InitializeComponent();
+        private AppConfig _config;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            
+            // Загружаем конфиг при старте
+            _config = ConfigManager.Load();
+            this.DataContext = _config;
+        }
+
+        protected override void OnClosed(System.EventArgs e)
+        {
+            // Сохраняем конфиг при закрытии
+            ConfigManager.Save(_config);
+            base.OnClosed(e);
+        }
     }
 }
